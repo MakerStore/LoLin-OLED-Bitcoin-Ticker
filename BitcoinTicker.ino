@@ -19,15 +19,10 @@ WiFiMulti wifiMulti;
 // Create display
 SSD1306 display(I2C, SDA, SCL);
 
-// LED pins
-#define LED_PIN_UP 4
-#define LED_PIN_DOWN 5
-
 // Previous Bitcoin value & threshold
 float previousValue = 0.0;
 float threshold = 0.05;
 String level = "FLAT";
-
 
 // API server
 const char* host = "api.coindesk.com";
@@ -43,10 +38,6 @@ void setup() {
   display.flipScreenVertically();
   display.clear();
   display.display();
-
-  // LED pins as output
-  pinMode(LED_PIN_DOWN, OUTPUT);
-  pinMode(LED_PIN_UP, OUTPUT);
 
   // We start by connecting to a WiFi network
   wifiMulti.addAP("PRIVATE_NETWORK", "bakkenson");
@@ -146,7 +137,6 @@ void loop() {
   updatedString.trim();
   //  float price = priceString.toFloat();
 
-
   // Init previous value
   if (previousValue == 0.0) {
     previousValue = price;
@@ -183,9 +173,6 @@ void loop() {
     display.drawString(0, 52, updatedString);
 
     display.display();
-
-
-
 
   }
 
