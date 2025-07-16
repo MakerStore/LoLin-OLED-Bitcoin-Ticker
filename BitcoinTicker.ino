@@ -40,7 +40,7 @@ void setup() {
   display.display();
 
   // We start by connecting to a WiFi network
-  wifiMulti.addAP("PRIVATE_NETWORK", "bakkenson");
+  wifiMulti.addAP("SSID", "WIFI PW");
 
   display.setLogBuffer(5, 30);
   display.println("Connecting Wifi...");
